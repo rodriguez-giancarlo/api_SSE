@@ -1,0 +1,68 @@
+###
+    GET http://localhost:4000/tema/28 HTTP/1.1
+
+###
+    GET http://localhost:4000/unidad/infoUnidad/96 HTTP/1.1
+###
+    GET http://localhost:4000/persona/buscar/grodriguezr@unprg.edu.pe
+
+###
+    POST http://localhost:4000/persona/save HTTP/1.1
+    Content-Type: application/json
+
+    {
+        "nombre":"Lucas",
+        "apellido":"Monadragon Peres",
+        "sexo":1,
+        "fechaNacimiento":"1985-02-27",
+        "dni":"7770754"
+    }
+
+###
+    DELETE http://localhost:4000/persona/delete/4 HTTP/1.1
+###
+    PUT http://localhost:4000/persona/update/5 HTTP/1.1
+    Content-Type: application/json
+    
+    {
+        "nombre":"Carlos",
+        "apellido":"Rodriguez Rivas",
+        "sexo":1,
+        "fechaNacimiento":"1997-02-27",
+        "dni":"74770754"
+    }
+    # seccion de temas
+###
+     GET http://localhost:4000/tema/11
+
+###
+     POST http://localhost:4000/tema/save HTTP/1.1
+    Content-Type: application/json
+
+    {
+        "nombre":"logica",
+        "idUnidad":1,
+        "vigencia":2
+    }
+###
+    GET http://localhost:4000/matricula/listar/5/ HTTP/1.1
+###
+    GET http://localhost:4000/matricula/buscar/5/11/ HTTP/1.1
+###
+    PUT  http://localhost:4000/tema/actualizar/2856/ HTTP/1.1
+    Content-Type: application/json
+    
+    {
+        "nombre":"comunicacion"
+    }
+###
+    GET http://localhost:4000/curso/infocurso/11 HTTP/1.1
+###
+    POST http://localhost:4000/recruso/save HTTP/1.1
+    Content-Type: application/json
+
+    {
+        "nombre":"Lucas",
+        "fechaNacimiento":"1985-02-27",
+        "archivo":"7770754"
+    }
