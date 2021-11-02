@@ -14,6 +14,7 @@ const temaRoutes=require('./routes/tema');
 const matriculaRoutes=require('./routes/matricula');
 const unidadRoutes=require('./routes/unidad');
 const recursoRoutes=require('./routes/recurso');
+const historialRoutes=require('./routes/historial');
 
 // configuraciones
 app.set('port',process.env.PORT || 4000);
@@ -46,6 +47,7 @@ app.use('/matricula',matriculaRoutes);
 app.use('/login', loginRoutes);
 app.use('/unidad',unidadRoutes);
 app.use('/recurso',recursoRoutes);
+app.use('/historial',historialRoutes);
 
 //arcivos stativos
 app.use(express.static(path.join(__dirname,'public')));

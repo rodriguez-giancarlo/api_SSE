@@ -12,6 +12,18 @@ controller.listar=(req,res)=>{
         })
     })
 };
+controller.infoRecurso=(req,res)=>{
+    req.getConnection((err,conn)=>{
+        if(err) return res.send(err)
+
+        conn.query('SELECT * FROM recurso WHERE idRecurso= ?',[req.params.idRecurso],(err,rows)=>{
+            if(err){
+                return res.json(err)
+            } 
+            res.json(rows)
+        })
+    })
+}
 
 controller.guardar=(req,res)=>{
     req.getConnection((err,conn)=>{

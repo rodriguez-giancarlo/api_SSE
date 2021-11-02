@@ -3,6 +3,7 @@ const router=Router();
 const recursoController= require('../controllers/recursoController');
 
 router.get('/:idCurso',recursoController.listar);
+router.get('/infoRecurso/:idRecurso',recursoController.infoRecurso);
 router.post('/save',recursoController.guardar);
 router.delete('/delete/:id',recursoController.eliminar);
 router.put('/update/:id',recursoController.actualizar);
