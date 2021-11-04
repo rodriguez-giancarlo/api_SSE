@@ -15,7 +15,7 @@ controller.listar=(req,res)=>{
     req.getConnection((err,conn)=>{
         if(err) return res.send(err)
 
-        conn.query('SELECT H.idHistorial,H.fecha,H.tiempo,H.idpersona,R.nombre,P.nombre,P.apellido,P.urlFoto, COUNT(*) as visto FROM recurso R INNER JOIN historial H ON R.idRecurso=H.idRecurso INNER JOIN persona P ON H.idpersona=P.idpersona WHERE H.idRecurso=? GROUP BY H.idpersona;',[req.params.idRecurso],(err,rows)=>{
+        conn.query('SELECT H.idHistorial,H.fecha,H.tiempo,H.idpersona,R.nombre,P.nombre,P.apellido,P.urlFoto, COUNT(*) as visto, SUM(tiempo) as TiempoAcumulado FROM recurso R INNER JOIN historial H ON R.idRecurso=H.idRecurso INNER JOIN persona P ON H.idpersona=P.idpersona WHERE H.idRecurso=? GROUP BY H.idpersona;',[req.params.idRecurso],(err,rows)=>{
             if(err){
                 return res.json(err)
             } 
@@ -37,4 +37,16 @@ controller.listarAlumnosMatriculadosXCurso=(req,res)=>{
     })
 };
 
+controller.listarXpersona=(req,res)=>{
+    req.getConnection((err,conn)=>{
+        if(err) return res.send(err)
+
+        conn.query('SELECT H.idHistorial,H.fecha,H.tiempo,H.idpersona,P.nombre,P.apellido,P.urlFoto FROM recurso R INNER JOIN historial H ON R.idRecurso=H.idRecurso INNER JOIN persona P ON H.idpersona=P.idpersona WHERE H.idRecurso=? AND H.idpersona=?;',[req.params.idRecurso,req.params.idpersona],(err,rows)=>{
+            if(err){
+                return res.json(err)
+            } 
+            res.json(rows)
+        })
+    })
+};
 module.exports=controller;
