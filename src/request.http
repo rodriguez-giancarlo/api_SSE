@@ -78,3 +78,5 @@
         "idRecurso":14,
         "idPersona":8
     }
+###
+    GET http://localhost:4000/curso/listaAlumnos/28 HTTP/1.1   

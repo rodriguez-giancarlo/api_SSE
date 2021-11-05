@@ -33,8 +33,10 @@ app.use(myConnection(mysql,{
     database:'db_school'
 },'single'));
 
-app.use(express.json());
 app.use(cors());
+app.use(fileUpload());
+app.use(express.static("files"));
+app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 //ruta base
 app.get('/',(req,res)=>{

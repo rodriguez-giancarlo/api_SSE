@@ -12,6 +12,18 @@ controller.listar=(req,res)=>{
         })
     })
 };
+controller.listarMatriculado=(req,res)=>{
+    req.getConnection((err,conn)=>{
+        if(err) return res.send(err)
+
+        conn.query('SELECT C.idCurso,C.nombre,P.nombre,P.apellido,P.urlFoto,P.email FROM curso C INNER JOIN matricula M ON C.idCurso=M.idCurso INNER JOIN persona P ON M.idpersona=P.idpersona WHERE C.idCurso=?',[req.params.idcurso],(err,rows)=>{
+            if(err){
+                return res.json(err)
+            } 
+            res.json(rows)
+        })
+    })
+};
 
 controller.guardar=(req,res)=>{
     req.getConnection((err,conn)=>{

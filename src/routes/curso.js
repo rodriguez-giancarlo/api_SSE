@@ -3,6 +3,7 @@ const router=Router();
 const cursoController= require('../controllers/cursoController');
 
 router.get('/:idpersona',cursoController.listar);
+router.get('/listaAlumnos/:idcurso',cursoController.listarMatriculado);
 router.get('/buscar/:clave',cursoController.buscar);
 router.get('/infocurso/:idcurso',cursoController.infoCurso);
 router.post('/save',cursoController.guardar);
