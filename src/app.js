@@ -1,4 +1,5 @@
 const express=require('express');
+const fileUpload = require('express-fileupload')
 const path=require('path');
 const morgan= require('morgan');
 const mysql=require('mysql');
@@ -48,6 +49,21 @@ app.use('/login', loginRoutes);
 app.use('/unidad',unidadRoutes);
 app.use('/recurso',recursoRoutes);
 app.use('/historial',historialRoutes);
+// Guardar archivos 
+// --------------------------------------------------------------------------
+app.post("/upload", (req, res) => {
+    
+    const file = req.files.file;
+    const filename = file.name;
+
+    file.mv(`./files/${filename}`, (err) => {
+        if (err) {
+        res.status(500).send({ message: "File upload failed", code: 200 });
+    }
+        res.status(200).send({ message: "File Uploaded", code: 200 });
+    });
+});
+// --------------------------------------------------------------------------
 
 //arcivos stativos
 app.use(express.static(path.join(__dirname,'public')));
